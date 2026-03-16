@@ -16,7 +16,7 @@
   --accent: #deece7;
   --accent-foreground: #28453e;
   --muted: #eef4f6;
-  --muted-foreground: #647784;
+  --muted-foreground: #546978;
   --border: #d3e0e6;
   --ring: #7aa8bc;
   --radius-sm: 0.55rem;
@@ -81,6 +81,35 @@
   textarea,
   select {
     @apply outline-none;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    @apply rounded-sm ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply text-foreground;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: color-mix(in srgb, var(--muted-foreground) 78%, white 22%);
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    border-color: var(--primary);
+    box-shadow:
+      0 0 0 1px var(--primary),
+      0 0 0 4px rgba(122, 168, 188, 0.18);
   }
 
   ::selection {

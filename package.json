@@ -11,7 +11,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Frontend foundation for the Willow Brook Dental Care website.",
+  "description": "A realistic multi-page dental clinic website template built with React, TypeScript, Vite, Tailwind CSS, and shadcn-style UI components.",
   "dependencies": {
     "@fontsource/manrope": "^5.2.9",
     "@fontsource/source-sans-3": "^5.2.6",

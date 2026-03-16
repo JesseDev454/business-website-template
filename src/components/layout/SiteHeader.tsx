@@ -9,8 +9,10 @@ import { cn } from "@/lib/utils";
 
 function getNavLinkClass(isActive: boolean) {
   return cn(
-    "text-[1rem] font-semibold transition-colors duration-200",
-    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+    "relative text-[1rem] font-semibold transition-colors duration-200 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:rounded-full after:bg-primary after:transition-all after:duration-200",
+    isActive
+      ? "text-foreground after:w-full"
+      : "text-muted-foreground after:w-0 hover:text-foreground hover:after:w-full",
   );
 }
 
@@ -22,18 +24,40 @@ export function SiteHeader() {
     setIsOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      document.body.style.removeProperty("overflow");
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.removeProperty("overflow");
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/88 backdrop-blur-md">
       <Container>
-        <div className="flex min-h-20 items-center gap-4">
+        <div className="flex min-h-20 items-center gap-4 py-2">
           <Link to="/" className="min-w-0 flex-1 md:flex-none">
-            <div className="font-display text-[1.15rem] font-semibold text-foreground sm:text-xl">
+            <div className="font-display text-[1.08rem] font-semibold text-foreground sm:text-xl">
               {clinicDetails.name}
             </div>
             <div className="text-sm text-muted-foreground">{clinicDetails.tagline}</div>
           </Link>
 
-          <nav className="hidden items-center gap-7 md:flex">
+          <nav aria-label="Primary navigation" className="hidden items-center gap-7 md:flex">
             {primaryNavigation.map((item) => (
               <NavLink
                 key={item.href}
@@ -73,9 +97,9 @@ export function SiteHeader() {
       </Container>
 
       {isOpen ? (
-        <div className="border-t border-border bg-white md:hidden">
+        <div className="border-t border-border bg-white/98 shadow-card md:hidden">
           <Container className="flex flex-col gap-5 py-5">
-            <nav className="flex flex-col gap-2">
+            <nav aria-label="Mobile navigation" className="flex flex-col gap-2">
               {primaryNavigation.map((item) => (
                 <NavLink
                   key={item.href}
@@ -97,7 +121,7 @@ export function SiteHeader() {
             <div className="flex flex-col gap-3">
               <a
                 href={clinicDetails.phoneHref}
-                className="text-sm font-semibold text-muted-foreground"
+                className="rounded-md px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors duration-200 hover:bg-surface hover:text-foreground"
               >
                 Call {clinicDetails.phone}
               </a>

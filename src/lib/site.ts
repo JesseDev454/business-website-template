@@ -24,6 +24,8 @@ export const clinicDetails = {
   tagline: "Family & Cosmetic Dentistry",
   phone: "(630) 555-0148",
   phoneHref: "tel:+16305550148",
+  email: "hello@willowbrookdentalcare.com",
+  emailHref: "mailto:hello@willowbrookdentalcare.com",
   addressLines: ["248 Willow Creek Drive", "Naperville, IL 60540"],
   appointmentHref: "/contact",
   hours: [

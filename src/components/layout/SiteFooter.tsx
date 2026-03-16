@@ -22,6 +22,12 @@ export function SiteFooter() {
             >
               {clinicDetails.phone}
             </a>
+            <a
+              href={clinicDetails.emailHref}
+              className="block text-sm font-semibold text-white/78 transition-colors hover:text-white"
+            >
+              {clinicDetails.email}
+            </a>
           </div>
 
           <div className="space-y-3">
@@ -55,7 +61,7 @@ export function SiteFooter() {
             <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-white/70">
               Quick Links
             </h3>
-            <nav className="flex flex-col gap-2">
+            <nav aria-label="Footer navigation" className="flex flex-col gap-2">
               {primaryNavigation.map((item) => (
                 <Link
                   key={item.href}
@@ -67,6 +73,9 @@ export function SiteFooter() {
               ))}
             </nav>
           </div>
+        </div>
+        <div className="mt-10 border-t border-white/10 pt-6 text-sm text-white/62">
+          Willow Brook Dental Care is a fictional clinic created for a portfolio project.
         </div>
       </Container>
     </footer>

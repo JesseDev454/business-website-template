@@ -15,19 +15,23 @@ export function NotFoundPage() {
   return (
     <Section spacing="hero">
       <Container size="narrow">
-        <Card className="text-center">
+        <Card className="overflow-hidden border-primary/12 bg-[linear-gradient(160deg,#f9fcfd_0%,#e8f2f6_58%,#deece7_100%)] text-center shadow-panel">
           <CardHeader>
             <span className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
-              Page Not Found
+              404 Page Not Found
             </span>
-            <CardTitle>That page is not part of the current clinic site structure.</CardTitle>
+            <CardTitle>That page could not be found.</CardTitle>
             <CardDescription>
-              Use the shared navigation to return to one of the main Sprint 2 routes.
+              The page you were looking for may have moved or may not exist. You can return to the
+              homepage or head back to the main clinic pages below.
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex justify-center">
-            <Button asChild>
+          <CardContent className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Button asChild className="w-full sm:w-auto">
               <Link to="/">Return Home</Link>
+            </Button>
+            <Button asChild variant="secondary" className="w-full sm:w-auto">
+              <Link to="/contact">Contact the Clinic</Link>
             </Button>
           </CardContent>
         </Card>

@@ -1,4 +1,5 @@
 import { Quote, Star } from "lucide-react";
+import { type HTMLAttributes } from "react";
 
 import {
   Card,
@@ -12,15 +13,21 @@ type TestimonialPlaceholderProps = {
   quote: string;
   patient: string;
   detail: string;
-};
+  title?: string;
+  description?: string;
+} & HTMLAttributes<HTMLDivElement>;
 
 export function TestimonialPlaceholder({
   quote,
   patient,
   detail,
+  title,
+  description,
+  className,
+  ...props
 }: TestimonialPlaceholderProps) {
   return (
-    <Card>
+    <Card className={className} {...props}>
       <CardHeader className="gap-4 pb-4">
         <div className="flex items-center justify-between">
           <div className="flex gap-1 text-[#c39b57]">
@@ -30,10 +37,8 @@ export function TestimonialPlaceholder({
           </div>
           <Quote className="h-5 w-5 text-primary" />
         </div>
-        <CardTitle>Patient Testimonial</CardTitle>
-        <CardDescription>
-          A reusable testimonial block for later content and layout work.
-        </CardDescription>
+        {title ? <CardTitle>{title}</CardTitle> : null}
+        {description ? <CardDescription>{description}</CardDescription> : null}
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-[1.05rem] leading-7 text-foreground">"{quote}"</p>
