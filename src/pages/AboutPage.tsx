@@ -172,7 +172,7 @@ export function AboutPage() {
                 description="Willow Brook Dental Care is designed to feel like a trusted local practice where patients can return for steady care year after year."
               />
               <div className="grid gap-4 sm:grid-cols-2">
-                <Card>
+                <Card interactive>
                   <CardHeader>
                     <CardTitle className="text-[1.15rem]">Family-centered care</CardTitle>
                     <CardDescription>
@@ -181,7 +181,7 @@ export function AboutPage() {
                     </CardDescription>
                   </CardHeader>
                 </Card>
-                <Card>
+                <Card interactive>
                   <CardHeader>
                     <CardTitle className="text-[1.15rem]">Reliable guidance</CardTitle>
                     <CardDescription>
@@ -236,7 +236,7 @@ export function AboutPage() {
                 every time they visit.
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
-                <Card>
+                <Card interactive>
                   <CardHeader>
                     <CardTitle className="text-[1.12rem]">Calm chairside approach</CardTitle>
                     <CardDescription>
@@ -245,7 +245,7 @@ export function AboutPage() {
                     </CardDescription>
                   </CardHeader>
                 </Card>
-                <Card>
+                <Card interactive>
                   <CardHeader>
                     <CardTitle className="text-[1.12rem]">Family and cosmetic experience</CardTitle>
                     <CardDescription>
@@ -274,9 +274,9 @@ export function AboutPage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {teamMembers.map((member, index) => (
-              <Card key={member.name}>
+              <Card key={member.name} interactive>
                 <div className="aspect-[4/3] border-b border-border bg-[linear-gradient(160deg,#f8fbfc_0%,#e6eff3_100%)] p-4">
-                  <div className="flex h-full items-end rounded-lg border border-dashed border-border bg-white/45 p-4">
+                  <div className="motion-interactive flex h-full items-end rounded-lg border border-dashed border-border bg-white/45 p-4 group-hover:scale-[1.015]">
                     <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
                       Team Photo {index + 1}
                     </p>
@@ -304,10 +304,7 @@ export function AboutPage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {values.map((value) => (
-              <Card
-                key={value.title}
-                className="transition-transform duration-200 hover:-translate-y-0.5"
-              >
+              <Card key={value.title} interactive>
                 <CardHeader>
                   <IconContainer icon={value.icon} />
                   <CardTitle className="pt-3 text-[1.18rem]">{value.title}</CardTitle>

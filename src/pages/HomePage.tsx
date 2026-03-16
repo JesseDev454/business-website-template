@@ -15,6 +15,7 @@ import {
 import { Link } from "react-router-dom";
 
 import { Container } from "@/components/layout/Container";
+import { MotionReveal } from "@/components/motion/MotionReveal";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/layout/SectionHeader";
 import { Button } from "@/components/ui/button";
@@ -27,7 +28,7 @@ import {
 } from "@/components/ui/card";
 import { IconContainer } from "@/components/ui/icon-container";
 import { TestimonialPlaceholder } from "@/components/ui/testimonial-placeholder";
-import { clinicDetails, coreServices } from "@/lib/site";
+import { clinicDetails } from "@/lib/site";
 
 const whyChooseUs: Array<{ icon: LucideIcon; title: string; description: string }> = [
   {
@@ -123,22 +124,36 @@ const galleryPreview = [
 export function HomePage() {
   return (
     <>
-      <Section spacing="hero">
+      <Section spacing="hero" reveal={false}>
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
             <div>
-              <span className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+              <MotionReveal
+                as="span"
+                mode="load"
+                delay={40}
+                className="inline-block text-sm font-semibold uppercase tracking-[0.24em] text-primary"
+              >
                 Family & Cosmetic Dentistry
-              </span>
-              <h1 className="mt-4 max-w-3xl text-balance text-4xl sm:text-5xl lg:text-[3.7rem]">
+              </MotionReveal>
+              <MotionReveal
+                as="h1"
+                mode="load"
+                delay={120}
+                className="mt-4 max-w-3xl text-balance text-4xl sm:text-5xl lg:text-[3.7rem]"
+              >
                 Gentle, Modern Dental Care for the Whole Family
-              </h1>
-              <p className="mt-6 max-w-2xl">
+              </MotionReveal>
+              <MotionReveal as="p" mode="load" delay={200} className="mt-6 max-w-2xl">
                 Willow Brook Dental Care provides preventive, cosmetic, and restorative dentistry
                 in a calm, welcoming environment designed to help patients feel comfortable from
                 the moment they arrive.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              </MotionReveal>
+              <MotionReveal
+                mode="load"
+                delay={280}
+                className="mt-8 flex flex-col gap-3 sm:flex-row"
+              >
                 <Button asChild size="lg" className="w-full sm:w-auto">
                   <Link to="/contact">
                     Book Appointment
@@ -148,67 +163,69 @@ export function HomePage() {
                 <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto">
                   <Link to="/services">View Services</Link>
                 </Button>
-              </div>
+              </MotionReveal>
             </div>
 
-            <Card className="overflow-hidden">
-              <div className="border-b border-border bg-[linear-gradient(160deg,#f8fcfd_0%,#e9f3f7_58%,#deece7_100%)] p-6 sm:p-8">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
-                      Clinic Preview
-                    </p>
-                    <h2 className="mt-3 text-2xl sm:text-[2rem]">
-                      Bright, welcoming spaces that feel calm from check-in to treatment.
-                    </h2>
-                  </div>
-                  <div className="hidden rounded-md bg-white/75 px-3 py-2 text-sm font-semibold text-foreground shadow-card sm:block">
-                    Accepting new patients
-                  </div>
-                </div>
-                <div className="mt-8 aspect-[4/3] rounded-xl border border-white/70 bg-white/55 p-5 shadow-panel">
-                  <div className="flex h-full flex-col justify-between rounded-lg border border-dashed border-primary/20 bg-white/45 p-5">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-primary">Clinic image area</span>
-                      <Sparkles className="h-5 w-5 text-primary" />
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-lg font-semibold text-foreground">
-                        Bright clinic photography or a welcoming patient portrait.
-                      </p>
-                      <p className="text-[1rem] leading-7 text-muted-foreground">
-                        This space is meant for imagery that feels warm, clean, and reassuring.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <CardContent className="grid gap-4 p-6 sm:grid-cols-2 sm:p-8">
-                <div className="rounded-md bg-surface p-4">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="mt-1 h-5 w-5 text-primary" />
+            <MotionReveal mode="load" delay={180}>
+              <Card className="overflow-hidden">
+                <div className="border-b border-border bg-[linear-gradient(160deg,#f8fcfd_0%,#e9f3f7_58%,#deece7_100%)] p-6 sm:p-8">
+                  <div className="flex items-start justify-between gap-4">
                     <div>
-                      {clinicDetails.addressLines.map((line) => (
-                        <p key={line} className="text-[1rem] leading-7 text-foreground">
-                          {line}
+                      <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+                        Clinic Preview
+                      </p>
+                      <h2 className="mt-3 text-2xl sm:text-[2rem]">
+                        Bright, welcoming spaces that feel calm from check-in to treatment.
+                      </h2>
+                    </div>
+                    <div className="hidden rounded-md bg-white/75 px-3 py-2 text-sm font-semibold text-foreground shadow-card sm:block">
+                      Accepting new patients
+                    </div>
+                  </div>
+                  <div className="mt-8 aspect-[4/3] rounded-xl border border-white/70 bg-white/55 p-5 shadow-panel">
+                    <div className="flex h-full flex-col justify-between rounded-lg border border-dashed border-primary/20 bg-white/45 p-5">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-primary">Clinic image area</span>
+                        <Sparkles className="h-5 w-5 text-primary" />
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-lg font-semibold text-foreground">
+                          Bright clinic photography or a welcoming patient portrait.
                         </p>
-                      ))}
+                        <p className="text-[1rem] leading-7 text-muted-foreground">
+                          This space is meant for imagery that feels warm, clean, and reassuring.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="rounded-md bg-surface p-4">
-                  <div className="flex items-start gap-3">
-                    <Clock3 className="mt-1 h-5 w-5 text-primary" />
-                    <div>
-                      <p className="text-[1rem] font-semibold text-foreground">
-                        Monday - Thursday
-                      </p>
-                      <p className="text-[0.98rem] text-muted-foreground">8:00 AM - 5:00 PM</p>
+                <CardContent className="grid gap-4 p-6 sm:grid-cols-2 sm:p-8">
+                  <div className="rounded-md bg-surface p-4">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="mt-1 h-5 w-5 text-primary" />
+                      <div>
+                        {clinicDetails.addressLines.map((line) => (
+                          <p key={line} className="text-[1rem] leading-7 text-foreground">
+                            {line}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="rounded-md bg-surface p-4">
+                    <div className="flex items-start gap-3">
+                      <Clock3 className="mt-1 h-5 w-5 text-primary" />
+                      <div>
+                        <p className="text-[1rem] font-semibold text-foreground">
+                          Monday - Thursday
+                        </p>
+                        <p className="text-[0.98rem] text-muted-foreground">8:00 AM - 5:00 PM</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </MotionReveal>
           </div>
         </Container>
       </Section>
@@ -235,10 +252,7 @@ export function HomePage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {servicePreview.map((service) => (
-              <Card
-                key={service.title}
-                className="transition-transform duration-200 hover:-translate-y-0.5"
-              >
+              <Card key={service.title} interactive>
                 <CardHeader>
                   <IconContainer icon={service.icon} />
                   <CardTitle className="pt-3">{service.title}</CardTitle>
@@ -267,10 +281,7 @@ export function HomePage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {whyChooseUs.map((item) => (
-              <Card
-                key={item.title}
-                className="transition-transform duration-200 hover:-translate-y-0.5"
-              >
+              <Card key={item.title} interactive>
                 <CardHeader>
                   <IconContainer icon={item.icon} />
                   <CardTitle className="pt-3 text-[1.22rem]">{item.title}</CardTitle>
@@ -314,7 +325,7 @@ export function HomePage() {
                 informed, and comfortable before any treatment begins.
               </p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <Card>
+                <Card interactive>
                   <CardHeader>
                     <CardTitle className="text-[1.15rem]">Gentle communication</CardTitle>
                     <CardDescription>
@@ -323,7 +334,7 @@ export function HomePage() {
                     </CardDescription>
                   </CardHeader>
                 </Card>
-                <Card>
+                <Card interactive>
                   <CardHeader>
                     <CardTitle className="text-[1.15rem]">Modern family care</CardTitle>
                     <CardDescription>
@@ -358,7 +369,6 @@ export function HomePage() {
                 quote={item.quote}
                 patient={item.patient}
                 detail={item.detail}
-                className="transition-transform duration-200 hover:-translate-y-0.5"
               />
             ))}
           </div>
@@ -374,12 +384,9 @@ export function HomePage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {galleryPreview.map((item, index) => (
-              <Card
-                key={item}
-                className="overflow-hidden transition-transform duration-200 hover:-translate-y-0.5"
-              >
+              <Card key={item} interactive className="overflow-hidden">
                 <div className="aspect-[4/3] border-b border-border bg-[linear-gradient(160deg,#f7fbfc_0%,#e5eff3_100%)] p-4">
-                  <div className="flex h-full flex-col justify-between rounded-lg border border-dashed border-border bg-white/40 p-4">
+                  <div className="motion-interactive flex h-full flex-col justify-between rounded-lg border border-dashed border-border bg-white/40 p-4 group-hover:scale-[1.02]">
                     <span className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
                       Preview {index + 1}
                     </span>

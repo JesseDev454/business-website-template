@@ -129,10 +129,11 @@ export function GalleryPage() {
             {featuredGalleryRow.map((item, index) => (
               <Card
                 key={item.title}
+                interactive
                 className="overflow-hidden border-primary/10 bg-[linear-gradient(160deg,#f9fcfd_0%,#edf5f8_60%,#ffffff_100%)] shadow-panel"
               >
                 <div className="aspect-[16/9] border-b border-border bg-[linear-gradient(160deg,#f8fbfc_0%,#e6eff3_100%)] p-5">
-                  <div className="flex h-full flex-col justify-between rounded-xl border border-dashed border-border bg-white/45 p-5 shadow-card">
+                  <div className="motion-interactive flex h-full flex-col justify-between rounded-xl border border-dashed border-border bg-white/45 p-5 shadow-card group-hover:scale-[1.015]">
                     <span className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
                       Featured {index + 1}
                     </span>
@@ -161,12 +162,9 @@ export function GalleryPage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {galleryImages.map((image) => (
-              <Card
-                key={image.title}
-                className="overflow-hidden transition-transform duration-200 hover:-translate-y-0.5"
-              >
+              <Card key={image.title} interactive className="overflow-hidden">
                 <div className="aspect-[4/3] border-b border-border bg-[linear-gradient(160deg,#f8fbfc_0%,#e6eff3_100%)] p-4">
-                  <div className="flex h-full flex-col justify-between rounded-lg border border-dashed border-border bg-white/45 p-4">
+                  <div className="motion-interactive flex h-full flex-col justify-between rounded-lg border border-dashed border-border bg-white/45 p-4 group-hover:scale-[1.02]">
                     <span className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
                       {image.category}
                     </span>

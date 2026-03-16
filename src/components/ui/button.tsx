@@ -5,18 +5,18 @@ import { type ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
+  "motion-interactive inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-card hover:-translate-y-0.5 hover:brightness-[0.97]",
+          "bg-primary text-primary-foreground shadow-card motion-safe:hover:-translate-y-0.5 hover:shadow-panel hover:brightness-[0.98]",
         secondary:
-          "bg-white text-foreground shadow-card hover:-translate-y-0.5 hover:bg-surface",
+          "bg-white text-foreground shadow-card motion-safe:hover:-translate-y-0.5 hover:bg-surface hover:shadow-panel",
         outline:
-          "border border-border bg-white text-foreground shadow-[0_8px_24px_rgba(23,50,68,0.05)] hover:border-primary/20 hover:bg-surface",
-        ghost: "text-foreground hover:bg-surface",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border border-border bg-white text-foreground shadow-[0_8px_24px_rgba(23,50,68,0.05)] hover:border-primary/20 hover:bg-surface hover:shadow-card",
+        ghost: "text-foreground hover:bg-surface hover:text-primary",
+        link: "text-primary underline-offset-4 hover:underline hover:decoration-primary/70",
       },
       size: {
         default: "h-11 px-5 py-2",

@@ -22,6 +22,10 @@
   --radius-sm: 0.55rem;
   --radius-md: 0.9rem;
   --radius-lg: 1.1rem;
+  --motion-duration-fast: 180ms;
+  --motion-duration-medium: 260ms;
+  --motion-duration-slow: 420ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
@@ -114,5 +118,55 @@
 
   ::selection {
     background: rgba(47, 111, 138, 0.18);
+  }
+}
+
+@layer utilities {
+  .motion-interactive {
+    transition-property: transform, box-shadow, border-color, background-color, color, opacity;
+    transition-duration: var(--motion-duration-medium);
+    transition-timing-function: var(--motion-ease);
+  }
+
+  .motion-reveal {
+    --motion-delay: 0ms;
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition-property: opacity, transform;
+    transition-delay: var(--motion-delay);
+    transition-timing-function: var(--motion-ease);
+    will-change: opacity, transform;
+  }
+
+  .motion-reveal--load {
+    transition-duration: var(--motion-duration-slow);
+  }
+
+  .motion-reveal--scroll {
+    transition-duration: var(--motion-duration-medium);
+  }
+
+  .motion-reveal[data-visible="true"] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .motion-reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

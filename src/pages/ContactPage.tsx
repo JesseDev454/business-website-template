@@ -241,10 +241,7 @@ export function ContactPage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {reassuranceItems.map((item) => (
-              <Card
-                key={item.title}
-                className="transition-transform duration-200 hover:-translate-y-0.5"
-              >
+              <Card key={item.title} interactive>
                 <CardHeader>
                   <IconContainer icon={item.icon} />
                   <CardTitle className="pt-3 text-[1.18rem]">{item.title}</CardTitle>

@@ -96,8 +96,15 @@ export function SiteHeader() {
         </div>
       </Container>
 
-      {isOpen ? (
-        <div className="border-t border-border bg-white/98 shadow-card md:hidden">
+      <div
+        className={cn(
+          "grid overflow-hidden border-t bg-white/98 shadow-card transition-[grid-template-rows,opacity,transform,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden",
+          isOpen
+            ? "grid-rows-[1fr] translate-y-0 border-border opacity-100"
+            : "pointer-events-none grid-rows-[0fr] -translate-y-2 border-transparent opacity-0",
+        )}
+      >
+        <div className="overflow-hidden">
           <Container className="flex flex-col gap-5 py-5">
             <nav aria-label="Mobile navigation" className="flex flex-col gap-2">
               {primaryNavigation.map((item) => (
@@ -131,7 +138,7 @@ export function SiteHeader() {
             </div>
           </Container>
         </div>
-      ) : null}
+      </div>
     </header>
   );
 }

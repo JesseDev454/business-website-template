@@ -1,11 +1,14 @@
 import { type ElementType, type HTMLAttributes } from "react";
 
+import { MotionReveal } from "@/components/motion/MotionReveal";
 import { cn } from "@/lib/utils";
 
 type SectionProps = HTMLAttributes<HTMLElement> & {
   as?: ElementType;
   tone?: "default" | "surface" | "muted";
   spacing?: "compact" | "default" | "hero";
+  reveal?: boolean;
+  revealDelay?: number;
 };
 
 const toneClasses = {
@@ -25,11 +28,21 @@ export function Section({
   className,
   tone = "default",
   spacing = "default",
+  reveal = true,
+  revealDelay = 0,
   ...props
 }: SectionProps) {
+  const classes = cn(spacingClasses[spacing], toneClasses[tone], className);
+
+  if (!reveal) {
+    return <Component className={classes} {...props} />;
+  }
+
   return (
-    <Component
-      className={cn(spacingClasses[spacing], toneClasses[tone], className)}
+    <MotionReveal
+      as={Component}
+      delay={revealDelay}
+      className={classes}
       {...props}
     />
   );

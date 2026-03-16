@@ -221,10 +221,7 @@ export function ServicesPage() {
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
-              <Card
-                key={service.title}
-                className="transition-transform duration-200 hover:-translate-y-0.5"
-              >
+              <Card key={service.title} interactive>
                 <CardHeader>
                   <IconContainer icon={service.icon} />
                   <CardTitle className="pt-3">{service.title}</CardTitle>
@@ -247,6 +244,7 @@ export function ServicesPage() {
             {featuredServices.map((service) => (
               <Card
                 key={service.title}
+                interactive
                 className="h-full overflow-hidden border-primary/10 bg-[linear-gradient(160deg,#f9fcfd_0%,#edf5f8_60%,#ffffff_100%)] shadow-panel"
               >
                 <div className="border-b border-border/80 bg-white/70 px-6 py-5">
@@ -283,10 +281,7 @@ export function ServicesPage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {trustReasons.map((item) => (
-              <Card
-                key={item.title}
-                className="transition-transform duration-200 hover:-translate-y-0.5"
-              >
+              <Card key={item.title} interactive>
                 <CardHeader>
                   <IconContainer icon={item.icon} />
                   <CardTitle className="pt-3 text-[1.18rem]">{item.title}</CardTitle>
@@ -307,7 +302,7 @@ export function ServicesPage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {reassuranceItems.map((item) => (
-              <Card key={item.question}>
+              <Card key={item.question} interactive>
                 <CardHeader>
                   <CardTitle className="text-[1.18rem]">{item.question}</CardTitle>
                   <CardDescription>{item.answer}</CardDescription>

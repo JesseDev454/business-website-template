@@ -27,7 +27,7 @@ export function TestimonialPlaceholder({
   ...props
 }: TestimonialPlaceholderProps) {
   return (
-    <Card className={className} {...props}>
+    <Card interactive className={className} {...props}>
       <CardHeader className="gap-4 pb-4">
         <div className="flex items-center justify-between">
           <div className="flex gap-1 text-[#c39b57]">
