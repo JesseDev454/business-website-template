@@ -1,0 +1,89 @@
+@import "@fontsource/manrope/600.css";
+@import "@fontsource/manrope/700.css";
+@import "@fontsource/source-sans-3/400.css";
+@import "@fontsource/source-sans-3/600.css";
+@import "tailwindcss";
+
+:root {
+  --background: #f4f9fb;
+  --foreground: #173244;
+  --surface: #eaf2f5;
+  --card: #ffffff;
+  --primary: #2f6f8a;
+  --primary-foreground: #f8fcfd;
+  --secondary: #dce8ee;
+  --secondary-foreground: #234356;
+  --accent: #deece7;
+  --accent-foreground: #28453e;
+  --muted: #eef4f6;
+  --muted-foreground: #647784;
+  --border: #d3e0e6;
+  --ring: #7aa8bc;
+  --radius-sm: 0.55rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.1rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: "Source Sans 3", ui-sans-serif, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, sans-serif;
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --shadow-card: 0 16px 40px rgba(23, 50, 68, 0.08);
+  --shadow-panel: 0 24px 54px rgba(23, 50, 68, 0.12);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(222, 236, 231, 0.55), transparent 34%),
+      linear-gradient(180deg, #f9fcfd 0%, #f4f9fb 100%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-foreground;
+  }
+
+  p {
+    @apply text-[1.0625rem] leading-7 text-muted-foreground;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    @apply outline-none;
+  }
+
+  ::selection {
+    background: rgba(47, 111, 138, 0.18);
+  }
+}
