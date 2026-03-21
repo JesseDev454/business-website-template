@@ -26,6 +26,7 @@ export const clinicDetails = {
   phoneHref: "tel:+16305550148",
   email: "hello@willowbrookdentalcare.com",
   emailHref: "mailto:hello@willowbrookdentalcare.com",
+  mapsHref: "https://maps.google.com/?q=248+Willow+Creek+Drive+Naperville+IL+60540",
   addressLines: ["248 Willow Creek Drive", "Naperville, IL 60540"],
   appointmentHref: "/contact",
   hours: [
