@@ -6,29 +6,42 @@ import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/button";
 import { pageImages } from "@/lib/page-images";
 
-const galleryCards = [
+type GalleryCard = {
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+  className: string;
+  overlay?: boolean;
+  overlayTitle?: string;
+};
+
+const galleryCards: GalleryCard[] = [
   {
     title: "Reception Area",
     description:
-      "A warm, organized front desk and waiting area that helps visitors settle in quickly.",
+      "Our reception area is designed to feel like a premium lounge, offering a calming start to your visit.",
     image: pageImages.gallery.reception,
     alt: "Modern high-end dental reception area with soft lighting and comfortable seating",
     className: "md:col-span-8 md:row-span-2",
     overlay: true,
+    overlayTitle: "Welcome Sanctuary",
   },
   {
     title: "Precision Tech",
-    description: "Modern equipment that supports clear treatment and efficient visits.",
+    description: "Advanced equipment and clean clinical surfaces that support precise care.",
     image: pageImages.gallery.tech,
     alt: "Advanced dental digital imaging equipment and clean clinical surfaces",
     className: "md:col-span-4",
+    overlayTitle: undefined,
   },
   {
     title: "Patient Suites",
-    description: "Treatment rooms designed to feel bright, clean, and reassuring.",
+    description: "Relaxing treatment rooms designed for comfort and clarity.",
     image: pageImages.gallery.treatment,
     alt: "Relaxing dental treatment room with ergonomic chair and large window view",
     className: "md:col-span-4",
+    overlayTitle: undefined,
   },
   {
     title: "Our Caring Team",
@@ -36,6 +49,7 @@ const galleryCards = [
     image: pageImages.gallery.team,
     alt: "Two friendly dental professionals smiling and working together in a bright office",
     className: "md:col-span-6",
+    overlayTitle: undefined,
   },
   {
     title: "Clinic Exterior",
@@ -43,14 +57,15 @@ const galleryCards = [
     image: pageImages.gallery.exterior,
     alt: "Elegant clinic exterior in a peaceful suburban setting with green landscaping",
     className: "md:col-span-6",
+    overlayTitle: undefined,
   },
 ];
 
 const hygienePoints = [
   "HEPA Air Filtration",
-  "Digital Sterilization Tracking",
+  "Digital Sterilization Traceability",
   "Touchless Technology",
-  "Modern Safety Protocols",
+  "OSHA Compliant",
 ];
 
 export function GalleryPage() {
@@ -63,11 +78,12 @@ export function GalleryPage() {
               Visual Journey
             </span>
             <h1 className="mb-6 text-5xl font-extrabold leading-tight text-foreground md:text-6xl">
-              Experience the <span className="text-primary">Clinic</span>
+              Experience the <span className="text-primary">Sanctuary</span>
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Explore the spaces, team presence, and clean treatment environment that help Willow
-              Brook feel calm, modern, and reassuring for patients of all ages.
+              Take a virtual tour of our state-of-the-art facility where modern technology meets
+              high-end hospitality. We've designed every corner with your comfort and clinical
+              excellence in mind.
             </p>
           </header>
 
@@ -85,7 +101,9 @@ export function GalleryPage() {
 
                 {card.overlay ? (
                   <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 via-transparent to-transparent p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <h2 className="text-2xl font-bold text-white">{card.title}</h2>
+                    <h2 className="text-2xl font-bold text-white">
+                      {card.overlayTitle ?? card.title}
+                    </h2>
                     <p className="mt-2 max-w-md text-base leading-7 text-white/80">
                       {card.description}
                     </p>
@@ -103,12 +121,12 @@ export function GalleryPage() {
             <div className="flex flex-col items-center gap-12 overflow-hidden rounded-[2rem] bg-[#eeeee9] p-12 md:flex-row md:p-20">
               <div className="z-10 flex-1">
                 <h2 className="mb-6 text-4xl font-bold leading-tight text-foreground">
-                  Clean, Comfortable, and Ready for Every Visit
+                  Uncompromising Standards of Hygiene
                 </h2>
                 <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                  Behind the welcoming look of the clinic is a strong focus on cleanliness,
-                  sterilization, and organized treatment spaces that help patients feel confident in
-                  every appointment.
+                  Beyond the aesthetics, our clinic adheres to surgical-grade sterilization
+                  protocols. Each room is deep-cleaned between appointments using hospital-grade
+                  disinfectants and advanced air filtration systems.
                 </p>
                 <div className="grid gap-6 sm:grid-cols-2">
                   {hygienePoints.map((point) => (
@@ -137,8 +155,8 @@ export function GalleryPage() {
                 Ready to experience the difference?
               </h2>
               <p className="mx-auto mb-10 max-w-xl text-lg text-[#c7e7ff]">
-                Visit Willow Brook in person and see why local families trust us for clean,
-                comfortable, patient-friendly dental care.
+                Join the hundreds of families who trust Willow Brook for their premium dental
+                experience.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-white/92">

@@ -20,7 +20,7 @@ const serviceCards = [
   {
     title: "Routine Exams & Cleanings",
     description:
-      "Preventive visits that help keep your smile healthy and allow the team to catch concerns early.",
+      "Your foundation for lifelong oral health. We provide thorough checkups and professional cleaning to keep your smile bright and prevent future issues before they start.",
     icon: ShieldCheck,
     className: "md:col-span-2 bg-[#f4f4ef]",
     action: "View Procedure Details",
@@ -28,7 +28,7 @@ const serviceCards = [
   {
     title: "Teeth Whitening",
     description:
-      "Professional whitening options that brighten your smile while keeping results natural and comfortable.",
+      "Professional whitening treatments that deliver stunning, natural results in a single visit or via customized take-home kits.",
     icon: Sparkles,
     className: "bg-[#e3e3de]",
     action: "Brighten My Smile",
@@ -36,7 +36,7 @@ const serviceCards = [
   {
     title: "Veneers & Cosmetics",
     description:
-      "Cosmetic improvements designed to refine your smile with a polished, patient-friendly approach.",
+      "Transform your look with handcrafted veneers and cosmetic adjustments designed to complement your unique facial features.",
     icon: SmilePlus,
     className: "bg-[#eeeee9]",
     action: "Explore Cosmetics",
@@ -44,7 +44,7 @@ const serviceCards = [
   {
     title: "Restorative: Crowns & Fillings",
     description:
-      "Strong, tooth-colored restorative care that helps rebuild comfort, function, and confidence.",
+      "We use the latest tooth-colored materials to restore the strength and beauty of your teeth. Durable, comfortable, and virtually indistinguishable from natural enamel.",
     icon: Wrench,
     className: "relative overflow-hidden md:col-span-2 bg-[#e8e8e3]",
     action: "Schedule Repair",
@@ -53,7 +53,7 @@ const serviceCards = [
   {
     title: "Family Dental Care",
     description:
-      "Practical, welcoming care for children, teens, adults, and busy family schedules.",
+      "From a child's first visit to senior oral health maintenance, we provide specialized care for every generation of your family.",
     icon: Users,
     className: "bg-[#f4f4ef]",
     action: "Learn More",
@@ -65,19 +65,19 @@ const comfortPoints = [
     icon: HeartHandshake,
     title: "Gentle Techniques",
     description:
-      "We explain each step clearly and move at a pace that helps patients feel informed and relaxed.",
+      "We move at your pace, explaining every step to ensure you feel in total control of your appointment.",
   },
   {
     icon: Ear,
     title: "Comfort Amenities",
     description:
-      "Small details and a calm atmosphere make routine care feel easier for nervous or first-time patients.",
+      "Noise-canceling headphones, warm blankets, and a calm environment help you relax the moment you sit back.",
   },
   {
     icon: ShieldCheck,
-    title: "Personalized Support",
+    title: "Sedation Options",
     description:
-      "Recommendations are tailored to your needs, goals, and comfort instead of following a one-size-fits-all script.",
+      "For deeper anxiety, we offer safe and effective comfort options to help make treatment feel far less stressful.",
   },
 ];
 
@@ -95,8 +95,8 @@ export function ServicesPage() {
                 Personalized Care for Your Radiant Smile
               </h1>
               <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Willow Brook offers preventive, cosmetic, restorative, emergency, and family
-                dental care in language that feels approachable, calm, and easy to understand.
+                We combine state-of-the-art clinical technology with the comforting atmosphere of
+                a wellness sanctuary to redefine your dental experience.
               </p>
             </div>
 
@@ -167,8 +167,8 @@ export function ServicesPage() {
                 <div>
                   <h2 className="mb-2 text-2xl font-bold text-[#93000a]">Emergency Visits</h2>
                   <p className="mb-4 text-base leading-7 text-muted-foreground">
-                    Sudden tooth pain or damage? We make room for urgent concerns and help
-                    patients understand what to do next without adding more stress.
+                    Sudden toothache or injury? We prioritize same-day emergency appointments to
+                    get you out of pain and back to your day.
                   </p>
                   <p className="text-lg font-bold text-primary">
                     Call {clinicDetails.phone} for immediate assistance.
@@ -192,7 +192,7 @@ export function ServicesPage() {
 
             <div className="lg:w-1/2">
               <h2 className="mb-8 text-4xl font-extrabold leading-tight text-primary">
-                Fear-Free Dentistry: Your Comfort Matters
+                Fear-Free Dentistry: Your Comfort is Our Priority
               </h2>
               <div className="space-y-8">
                 {comfortPoints.map((point) => {
@@ -223,8 +223,8 @@ export function ServicesPage() {
                 Ready to rediscover your smile?
               </h2>
               <p className="mx-auto mb-12 max-w-2xl text-xl text-white/90">
-                Join the Willow Brook family and experience patient-friendly care tailored to your
-                comfort and your everyday needs.
+                Join the Willow Brook family and experience dental care tailored to your life and
+                comfort.
               </p>
               <div className="flex flex-col justify-center gap-6 sm:flex-row">
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-white/92">
