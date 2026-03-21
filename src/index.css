@@ -1,3 +1,4 @@
+@import "@fontsource/manrope/400.css";
 @import "@fontsource/manrope/600.css";
 @import "@fontsource/manrope/700.css";
 @import "@fontsource/source-sans-3/400.css";
@@ -5,23 +6,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f9fb;
-  --foreground: #173244;
-  --surface: #eaf2f5;
+  --background: #fafaf5;
+  --foreground: #1a1c19;
+  --surface: #f4f4ef;
   --card: #ffffff;
-  --primary: #2f6f8a;
-  --primary-foreground: #f8fcfd;
-  --secondary: #dce8ee;
-  --secondary-foreground: #234356;
-  --accent: #deece7;
-  --accent-foreground: #28453e;
-  --muted: #eef4f6;
-  --muted-foreground: #546978;
-  --border: #d3e0e6;
-  --ring: #7aa8bc;
-  --radius-sm: 0.55rem;
-  --radius-md: 0.9rem;
-  --radius-lg: 1.1rem;
+  --primary: #32617d;
+  --primary-foreground: #ffffff;
+  --secondary: #cde6f4;
+  --secondary-foreground: #334a55;
+  --accent: #f7e382;
+  --accent-foreground: #4a4000;
+  --muted: #eeeee9;
+  --muted-foreground: #414751;
+  --border: #e3e3de;
+  --ring: #9fcced;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.5rem;
   --motion-duration-fast: 180ms;
   --motion-duration-medium: 260ms;
   --motion-duration-slow: 420ms;
@@ -48,8 +49,8 @@
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
-  --shadow-card: 0 16px 40px rgba(23, 50, 68, 0.08);
-  --shadow-panel: 0 24px 54px rgba(23, 50, 68, 0.12);
+  --shadow-card: 0 18px 44px rgba(26, 28, 25, 0.05);
+  --shadow-panel: 0 30px 54px rgba(26, 28, 25, 0.08);
 }
 
 @layer base {
@@ -64,8 +65,8 @@
   body {
     @apply min-h-screen bg-background font-sans text-foreground antialiased;
     background-image:
-      radial-gradient(circle at top left, rgba(222, 236, 231, 0.55), transparent 34%),
-      linear-gradient(180deg, #f9fcfd 0%, #f4f9fb 100%);
+      radial-gradient(circle at top left, rgba(201, 231, 255, 0.38), transparent 28%),
+      linear-gradient(180deg, #fcfcf8 0%, #fafaf5 100%);
   }
 
   h1,
@@ -117,7 +118,7 @@
   }
 
   ::selection {
-    background: rgba(47, 111, 138, 0.18);
+    background: rgba(159, 204, 237, 0.4);
   }
 }
 

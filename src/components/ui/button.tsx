@@ -5,23 +5,23 @@ import { type ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "motion-interactive inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
+  "motion-interactive inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-display text-sm font-bold tracking-tight focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-card motion-safe:hover:-translate-y-0.5 hover:shadow-panel hover:brightness-[0.98]",
+          "bg-primary text-primary-foreground shadow-card motion-safe:hover:-translate-y-0.5 hover:opacity-90 hover:shadow-panel",
         secondary:
-          "bg-white text-foreground shadow-card motion-safe:hover:-translate-y-0.5 hover:bg-surface hover:shadow-panel",
+          "bg-[#e3e3de] text-primary shadow-none motion-safe:hover:-translate-y-0.5 hover:bg-[#e8e8e3]",
         outline:
-          "border border-border bg-white text-foreground shadow-[0_8px_24px_rgba(23,50,68,0.05)] hover:border-primary/20 hover:bg-surface hover:shadow-card",
+          "border-2 border-primary/20 bg-transparent text-primary shadow-none hover:bg-white/60 hover:text-primary",
         ghost: "text-foreground hover:bg-surface hover:text-primary",
         link: "text-primary underline-offset-4 hover:underline hover:decoration-primary/70",
       },
       size: {
         default: "h-11 px-5 py-2",
         sm: "h-10 px-4 py-2",
-        lg: "h-12 px-6 py-3 text-[1rem]",
+        lg: "h-14 px-8 py-3 text-[1rem]",
         icon: "h-10 w-10",
       },
     },

@@ -1,340 +1,246 @@
 import {
-  ArrowRight,
-  Baby,
-  CalendarCheck2,
+  Ear,
   HeartHandshake,
-  MessageSquareHeart,
   ShieldCheck,
   Siren,
-  Smile,
+  SmilePlus,
   Sparkles,
-  Stethoscope,
-  type LucideIcon,
+  Users,
+  Wrench,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Container } from "@/components/layout/Container";
-import { PageHeader } from "@/components/layout/PageHeader";
 import { Section } from "@/components/layout/Section";
-import { SectionHeader } from "@/components/layout/SectionHeader";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { IconContainer } from "@/components/ui/icon-container";
 import { clinicDetails } from "@/lib/site";
+import { pageImages } from "@/lib/page-images";
 
-const services: Array<{
-  title: string;
-  description: string;
-  icon: LucideIcon;
-}> = [
+const serviceCards = [
   {
-    title: "Routine Exams and Cleanings",
+    title: "Routine Exams & Cleanings",
     description:
-      "Regular visits that help keep your teeth healthy, comfortable, and easy to care for over time.",
-    icon: Stethoscope,
-  },
-  {
-    title: "Fillings and Preventive Care",
-    description:
-      "Practical treatment and preventive support that protect your smile before small concerns grow into larger ones.",
+      "Preventive visits that help keep your smile healthy and allow the team to catch concerns early.",
     icon: ShieldCheck,
+    className: "md:col-span-2 bg-[#f4f4ef]",
+    action: "View Procedure Details",
   },
   {
     title: "Teeth Whitening",
     description:
-      "Simple cosmetic care for patients who want a brighter smile in a way that feels approachable and clearly explained.",
+      "Professional whitening options that brighten your smile while keeping results natural and comfortable.",
     icon: Sparkles,
+    className: "bg-[#e3e3de]",
+    action: "Brighten My Smile",
   },
   {
-    title: "Veneers",
+    title: "Veneers & Cosmetics",
     description:
-      "Cosmetic smile improvements for patients who want a more polished look with guidance they can feel confident about.",
-    icon: Smile,
+      "Cosmetic improvements designed to refine your smile with a polished, patient-friendly approach.",
+    icon: SmilePlus,
+    className: "bg-[#eeeee9]",
+    action: "Explore Cosmetics",
   },
   {
-    title: "Crowns and Restorative Dentistry",
+    title: "Restorative: Crowns & Fillings",
     description:
-      "Support for repairing damaged teeth and restoring function with treatment options explained in calm, patient-friendly language.",
-    icon: HeartHandshake,
+      "Strong, tooth-colored restorative care that helps rebuild comfort, function, and confidence.",
+    icon: Wrench,
+    className: "relative overflow-hidden md:col-span-2 bg-[#e8e8e3]",
+    action: "Schedule Repair",
+    primary: true,
   },
   {
-    title: "Emergency Dental Visits",
+    title: "Family Dental Care",
     description:
-      "Prompt care for sudden pain, discomfort, or damage when you need help quickly and reassurance right away.",
-    icon: Siren,
-  },
-  {
-    title: "Pediatric and Family Dentistry",
-    description:
-      "Friendly care for children, teens, and adults so families can rely on one trusted clinic for everyday visits.",
-    icon: Baby,
+      "Practical, welcoming care for children, teens, adults, and busy family schedules.",
+    icon: Users,
+    className: "bg-[#f4f4ef]",
+    action: "Learn More",
   },
 ];
 
-const featuredServices: Array<{
-  eyebrow: string;
-  title: string;
-  description: string;
-  points: string[];
-}> = [
-  {
-    eyebrow: "Preventive Care",
-    title: "Stay ahead of dental concerns with steady, routine support.",
-    description:
-      "Preventive care is about helping patients maintain healthy teeth and gums with regular visits, gentle cleanings, and clear recommendations that feel easy to follow.",
-    points: [
-      "Routine exams and professional cleanings",
-      "Preventive guidance tailored to everyday habits",
-      "Simple explanations that reduce uncertainty",
-    ],
-  },
-  {
-    eyebrow: "Cosmetic Dentistry",
-    title: "Feel more confident in your smile without feeling pressured.",
-    description:
-      "Cosmetic services are presented in a calm, conversational way so patients can explore whitening, veneers, and smile improvements with realistic expectations.",
-    points: [
-      "Approachable teeth whitening options",
-      "Veneer conversations guided with clarity",
-      "A focus on comfort and natural-looking results",
-    ],
-  },
-  {
-    eyebrow: "Restorative Dentistry",
-    title: "Restore comfort, strength, and function with practical treatment planning.",
-    description:
-      "When teeth need repair, the goal is to help patients understand their options clearly and move forward with care that feels steady and supportive.",
-    points: [
-      "Crowns and restorative solutions explained simply",
-      "Recommendations based on comfort and long-term function",
-      "A patient-first pace for treatment decisions",
-    ],
-  },
-  {
-    eyebrow: "Emergency Care",
-    title: "When something sudden happens, patients can count on calm guidance.",
-    description:
-      "Emergency visits are handled with urgency, but also with reassurance. Patients should know what to do next and feel supported as soon as they contact the clinic.",
-    points: [
-      "Fast help for urgent dental concerns",
-      "Clear next steps when pain or damage occurs",
-      "A welcoming approach even during stressful visits",
-    ],
-  },
-];
-
-const commonVisitReasons = [
-  "Tooth pain",
-  "Routine cleaning",
-  "Chipped tooth",
-  "Whitening",
-  "Child's first visit",
-];
-
-const trustReasons: Array<{
-  icon: LucideIcon;
-  title: string;
-  description: string;
-}> = [
-  {
-    icon: MessageSquareHeart,
-    title: "Clear communication",
-    description:
-      "Patients receive straightforward explanations so they feel informed, not overwhelmed.",
-  },
+const comfortPoints = [
   {
     icon: HeartHandshake,
-    title: "Gentle care",
+    title: "Gentle Techniques",
     description:
-      "The clinic is designed to feel calm and supportive for routine visits, cosmetic care, and first-time patients.",
+      "We explain each step clearly and move at a pace that helps patients feel informed and relaxed.",
   },
   {
-    icon: Sparkles,
-    title: "Modern equipment",
+    icon: Ear,
+    title: "Comfort Amenities",
     description:
-      "Up-to-date tools and techniques support a clean, professional, and reassuring treatment experience.",
+      "Small details and a calm atmosphere make routine care feel easier for nervous or first-time patients.",
   },
   {
-    icon: CalendarCheck2,
-    title: "Personalized recommendations",
+    icon: ShieldCheck,
+    title: "Personalized Support",
     description:
-      "Care plans are tailored to patient needs, schedules, and comfort rather than one-size-fits-all treatment.",
-  },
-];
-
-const reassuranceItems = [
-  {
-    question: "Are new patients welcome?",
-    answer:
-      "Yes. Willow Brook Dental Care welcomes new patients and works to make the first visit feel clear, calm, and comfortable.",
-  },
-  {
-    question: "Do you treat children?",
-    answer:
-      "Yes. The clinic offers pediatric and family dentistry, making it easier for children, teens, and adults to be seen in one trusted office.",
-  },
-  {
-    question: "Can I come in for urgent pain?",
-    answer:
-      "Yes. Emergency dental visits are available for urgent discomfort, sudden pain, or unexpected dental problems that need prompt attention.",
-  },
-  {
-    question: "Will you explain treatment clearly?",
-    answer:
-      "Yes. The team takes time to explain recommendations in patient-friendly language so visitors know what to expect and why it matters.",
+      "Recommendations are tailored to your needs, goals, and comfort instead of following a one-size-fits-all script.",
   },
 ];
 
 export function ServicesPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Services"
-        title="Dental care that covers preventive, cosmetic, restorative, emergency, and family visits."
-        description="Willow Brook Dental Care offers patient-friendly treatment options designed to feel clear, calm, and easy to understand, whether you need routine care or help with a specific concern."
-        actions={
-          <Button asChild variant="secondary">
-            <Link to="/contact">Book Appointment</Link>
-          </Button>
-        }
-      />
-
-      <Section>
-        <Container>
-          <SectionHeader
-            eyebrow="Services Grid"
-            title="A clear overview of the care available at Willow Brook Dental Care."
-            description="Patients can scan this section quickly to find the type of care that fits their needs, from routine visits to urgent concerns."
-          />
-          <div className="mt-8 grid gap-3 rounded-xl border border-border bg-white p-4 shadow-card sm:grid-cols-2 lg:grid-cols-5">
-            {commonVisitReasons.map((item) => (
-              <div key={item} className="rounded-md bg-surface px-3 py-3 text-center">
-                <p className="text-[0.98rem] font-semibold text-foreground">{item}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((service) => (
-              <Card key={service.title} interactive>
-                <CardHeader>
-                  <IconContainer icon={service.icon} />
-                  <CardTitle className="pt-3">{service.title}</CardTitle>
-                  <CardDescription>{service.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section tone="muted">
-        <Container>
-          <SectionHeader
-            eyebrow="Featured Services"
-            title="A little more detail for the care patients ask about most often."
-            description="These larger sections offer a bit more context for common services while keeping the language clear, reassuring, and easy to follow."
-          />
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {featuredServices.map((service) => (
-              <Card
-                key={service.title}
-                interactive
-                className="h-full overflow-hidden border-primary/10 bg-[linear-gradient(160deg,#f9fcfd_0%,#edf5f8_60%,#ffffff_100%)] shadow-panel"
-              >
-                <div className="border-b border-border/80 bg-white/70 px-6 py-5">
-                  <span className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
-                    {service.eyebrow}
-                  </span>
-                </div>
-                <CardHeader>
-                  <CardTitle>{service.title}</CardTitle>
-                  <CardDescription>{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {service.points.map((point) => (
-                      <li key={point} className="flex items-start gap-3">
-                        <ArrowRight className="mt-1 h-4 w-4 text-primary" />
-                        <p className="text-[1rem] leading-7 text-foreground">{point}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container>
-          <SectionHeader
-            eyebrow="Why Patients Choose Willow Brook"
-            title="Treatment recommendations are grounded in comfort, clarity, and steady care."
-            description="Patients are more likely to reach out when they understand how the clinic approaches treatment, not just what it offers."
-          />
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {trustReasons.map((item) => (
-              <Card key={item.title} interactive>
-                <CardHeader>
-                  <IconContainer icon={item.icon} />
-                  <CardTitle className="pt-3 text-[1.18rem]">{item.title}</CardTitle>
-                  <CardDescription>{item.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section tone="muted">
-        <Container>
-          <SectionHeader
-            eyebrow="Helpful Reassurance"
-            title="A few quick answers can make reaching out feel easier."
-            description="This section reduces uncertainty for patients who may still be deciding whether to call, book, or ask a question."
-          />
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {reassuranceItems.map((item) => (
-              <Card key={item.question} interactive>
-                <CardHeader>
-                  <CardTitle className="text-[1.18rem]">{item.question}</CardTitle>
-                  <CardDescription>{item.answer}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section spacing="compact">
-        <Container size="narrow">
-          <Card className="overflow-hidden border-primary/12 bg-[linear-gradient(160deg,#f9fcfd_0%,#e8f2f6_58%,#deece7_100%)] shadow-panel">
-            <div className="p-8 sm:p-10">
-              <SectionHeader
-                eyebrow="Schedule a Visit"
-                title="Ready to talk through your dental care options?"
-                description="Whether you are due for a routine visit, exploring cosmetic treatment, or dealing with a more urgent concern, Willow Brook Dental Care is ready to help you take the next step."
-                actions={
-                  <>
-                    <Button asChild size="lg">
-                      <Link to="/contact">Book Appointment</Link>
-                    </Button>
-                    <Button asChild size="lg" variant="secondary">
-                      <a href={clinicDetails.phoneHref}>Call the Clinic</a>
-                    </Button>
-                  </>
-                }
-                align="center"
-              />
+      <Section spacing="compact" reveal={false} className="px-4 pb-20 pt-28 md:px-6 lg:px-8">
+        <Container size="wide">
+          <div className="mb-24 grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <span className="mb-4 block text-sm font-bold uppercase tracking-[0.22em] text-[#6c5e06]">
+                Our Expertise
+              </span>
+              <h1 className="mb-6 text-5xl font-extrabold leading-tight text-primary md:text-6xl">
+                Personalized Care for Your Radiant Smile
+              </h1>
+              <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
+                Willow Brook offers preventive, cosmetic, restorative, emergency, and family
+                dental care in language that feels approachable, calm, and easy to understand.
+              </p>
             </div>
-          </Card>
+
+            <div className="relative h-[400px] overflow-hidden rounded-[2rem] shadow-panel">
+              <img
+                src={pageImages.services.hero}
+                alt="Modern dental office with soft lighting"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent" />
+            </div>
+          </div>
+
+          <div className="mb-32 grid gap-6 md:grid-cols-3">
+            {serviceCards.map((card) => {
+              const Icon = card.icon;
+
+              return (
+                <div
+                  key={card.title}
+                  className={`rounded-[2rem] p-10 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-panel ${card.className}`}
+                >
+                  <div className="max-w-lg">
+                    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/80 text-primary">
+                      <Icon className="h-7 w-7" />
+                    </div>
+                    <h2
+                      className={`mb-4 font-display font-bold text-primary ${
+                        card.primary || card.className.includes("md:col-span-2")
+                          ? "text-3xl"
+                          : "text-2xl"
+                      }`}
+                    >
+                      {card.title}
+                    </h2>
+                    <p className="mb-8 text-base leading-7 text-muted-foreground">
+                      {card.description}
+                    </p>
+
+                    {card.primary ? (
+                      <Button asChild>
+                        <Link to="/contact">{card.action}</Link>
+                      </Button>
+                    ) : (
+                      <button
+                        type="button"
+                        className="font-bold text-primary transition-all hover:opacity-75"
+                      >
+                        {card.action}
+                      </button>
+                    )}
+                  </div>
+
+                  {card.primary ? (
+                    <div className="pointer-events-none absolute bottom-0 right-0 opacity-10">
+                      <Sparkles className="h-40 w-40 text-primary" />
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
+
+            <div className="rounded-[2rem] border border-[#ba1a1a]/10 bg-[#ffdad6]/35 p-10 md:col-span-2">
+              <div className="flex flex-col gap-6 md:flex-row md:items-center">
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#ffdad6] text-[#93000a]">
+                  <Siren className="h-9 w-9" />
+                </div>
+                <div>
+                  <h2 className="mb-2 text-2xl font-bold text-[#93000a]">Emergency Visits</h2>
+                  <p className="mb-4 text-base leading-7 text-muted-foreground">
+                    Sudden tooth pain or damage? We make room for urgent concerns and help
+                    patients understand what to do next without adding more stress.
+                  </p>
+                  <p className="text-lg font-bold text-primary">
+                    Call {clinicDetails.phone} for immediate assistance.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-32 flex flex-col items-center gap-16 lg:flex-row">
+            <div className="relative lg:w-1/2">
+              <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-secondary opacity-30 blur-3xl" />
+              <div className="relative z-10 rotate-1 overflow-hidden rounded-[2rem] shadow-panel">
+                <img
+                  src={pageImages.services.comfort}
+                  alt="Gentle dentist talking to a relaxed patient in a soft-lit room"
+                  className="aspect-[4/5] w-full object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="lg:w-1/2">
+              <h2 className="mb-8 text-4xl font-extrabold leading-tight text-primary">
+                Fear-Free Dentistry: Your Comfort Matters
+              </h2>
+              <div className="space-y-8">
+                {comfortPoints.map((point) => {
+                  const Icon = point.icon;
+
+                  return (
+                    <div key={point.title} className="flex gap-6">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e3e3de]">
+                        <Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="mb-2 text-lg font-bold text-primary">{point.title}</h3>
+                        <p className="text-base leading-7 text-muted-foreground">
+                          {point.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden rounded-[3rem] bg-primary p-16 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+            <div className="relative z-10">
+              <h2 className="mb-8 text-4xl font-extrabold text-white md:text-5xl">
+                Ready to rediscover your smile?
+              </h2>
+              <p className="mx-auto mb-12 max-w-2xl text-xl text-white/90">
+                Join the Willow Brook family and experience patient-friendly care tailored to your
+                comfort and your everyday needs.
+              </p>
+              <div className="flex flex-col justify-center gap-6 sm:flex-row">
+                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/92">
+                  <Link to="/contact">Book Your First Visit</Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-white/30 text-white hover:bg-white/10 hover:text-white"
+                >
+                  <a href={clinicDetails.phoneHref}>Call Our Office</a>
+                </Button>
+              </div>
+            </div>
+          </div>
         </Container>
       </Section>
     </>

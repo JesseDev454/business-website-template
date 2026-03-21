@@ -21,18 +21,18 @@ export type ServiceItem = {
 
 export const clinicDetails = {
   name: "Willow Brook Dental Care",
-  tagline: "Family & Cosmetic Dentistry",
-  phone: "(630) 555-0148",
-  phoneHref: "tel:+16305550148",
-  email: "hello@willowbrookdentalcare.com",
-  emailHref: "mailto:hello@willowbrookdentalcare.com",
-  mapsHref: "https://maps.google.com/?q=248+Willow+Creek+Drive+Naperville+IL+60540",
-  addressLines: ["248 Willow Creek Drive", "Naperville, IL 60540"],
+  tagline: "Modern Dental Care with a Personal Touch",
+  phone: "(555) 234-5678",
+  phoneHref: "tel:+15552345678",
+  email: "hello@willowbrookdental.com",
+  emailHref: "mailto:hello@willowbrookdental.com",
+  mapsHref: "https://maps.google.com/?q=123+Willow+Brook+Way+Suite+100+Springfield+IL+62704",
+  addressLines: ["123 Willow Brook Way, Suite 100", "Springfield, IL 62704"],
   appointmentHref: "/contact",
   hours: [
     { label: "Monday - Thursday", value: "8:00 AM - 5:00 PM" },
-    { label: "Friday", value: "8:00 AM - 1:00 PM" },
-    { label: "Saturday", value: "By appointment" },
+    { label: "Friday", value: "8:00 AM - 2:00 PM" },
+    { label: "Saturday", value: "Closed" },
     { label: "Sunday", value: "Closed" },
   ],
 };

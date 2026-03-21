@@ -10,17 +10,17 @@ import { Section } from "@/components/layout/Section";
 export function ContactPage() {
   return (
     <>
-      <ContactHero />
+      <Section spacing="compact" reveal={false} className="pb-20 pt-24 md:pt-32">
+        <Container size="wide">
+          <ContactHero />
 
-      <Section spacing="compact" className="pt-0">
-        <Container>
-          <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] xl:gap-10">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <div className="space-y-8 lg:col-span-7">
               <ContactFormCard />
               <NewPatientNotice />
             </div>
 
-            <div className="space-y-6 lg:sticky lg:top-28 lg:self-start">
+            <div className="space-y-8 lg:col-span-5">
               <ContactInfoCard />
               <MapCard />
               <BookingCtaCard />
